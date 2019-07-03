@@ -25,13 +25,19 @@ def main():
                     )
                     continue
 
+                payee = sheet.cell_value(i, 1)
+                memo = None
+                outflow = str(sheet.cell_value(i, 2)).strip('-')
+                inflow = str(sheet.cell_value(i, 3)).strip('-')
+
                 row = [
                     datetime.datetime.strftime(my_date, '%m/%d/%y'),
-                    sheet.cell_value(i, 1),
-                    '_MEMO_',
-                    sheet.cell_value(i, 2),
-                    sheet.cell_value(i, 3) * -1,
+                    payee,
+                    memo,
+                    outflow,
+                    inflow,
                 ]
+
                 c.writerow(row)
 
 
